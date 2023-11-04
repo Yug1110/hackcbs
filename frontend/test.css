@@ -85,3 +85,29 @@ hr{
     width: 50%;
     margin: 50px auto;
 }
+
+.butt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+button{
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    width: 300px;
+    height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: sticky;
+    text-align: center;
+
+}
+
+button:hover{
+    color: wheat;
+    right: 20px;
+}
