@@ -31,8 +31,6 @@ if __name__ == '__main__':
 
     @app.before_request
     def only_once():
-        global first
-
         if 'name' not in flask.session:
             flask.session['name'] = ''
             flask.session['logged'] = False
