@@ -51,9 +51,9 @@ if __name__ == '__main__':
             db.session.commit()
 
 
-    @app.route('/login', methods=['GET', 'POST'])
+    @app.route('/login/', methods=['GET', 'POST'])
     def login():
-        if flask.session['logged']:
+        if flask.session['logged'] is True:
             return flask.redirect(flask.url_for('main'))
         
         if flask.request.method == 'POST':
@@ -75,7 +75,7 @@ if __name__ == '__main__':
         return flask.render_template('index.html', _name='', rno='', error='')
     
 
-    @app.route('/logout')
+    @app.route('/logout/')
     def logout():
         flask.session['logged'] = False
         flask.session['name'] = ''
@@ -84,7 +84,7 @@ if __name__ == '__main__':
         return flask.redirect(flask.url_for('main'))
     
 
-    @app.route('/<name>')
+    @app.route('/<name>/')
     def account(name):
         if flask.session['logged'] is not False and name == flask.session['name']:
             if Database.query.get(flask.session['id']).ts == json.dumps({}):
@@ -114,10 +114,11 @@ if __name__ == '__main__':
         return flask.redirect(flask.url_for('main'))
     
 
-    @app.route('/<name>/notification')
+    @app.route('/<name>/notification/')
     def notification(name):
         if flask.session['logged'] is not False and name == flask.session['name']:
-            return flask.render_template('notification.html')
+            num = len(json.loads(Database.query.get(flask.session['id']).ts)) + 1
+            return flask.render_template('notification.html', val=num)
         
         return flask.redirect(flask.url_for('main'))
     
