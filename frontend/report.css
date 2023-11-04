@@ -12,3 +12,32 @@ a{
     text-decoration: none;
 
 }
+
+body{
+    background-color: #FFFCEC;
+    height: 100vh;
+}
+
+nav{
+    width: 100%;
+    background-color: black;
+    color: #FFFCEC;
+    height: 171px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1{
+    font-size: 50px;
+}
+
+i{
+    margin:0px 30px;
+    font-size: 30px;
+}
+
+
+
+
+
