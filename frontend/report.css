@@ -118,3 +118,28 @@ li span{
     width: 50%;
     height: 80%;
 }
+
+footer{
+    /* position:absolute; */
+    bottom: 0px;
+    margin-top: auto;
+    background-color: black;
+    color: #FFFCEC;
+    height: 80px;
+    width: 100%;
+    text-align: center;
+}
+
+footer p{
+    margin-bottom: 10px;
+}
+
+footer a{
+    text-decoration: none;
+    color: #FFFCEC;
+}
+
+footer a:hover{
+    color: wheat;
+    cursor: pointer;
+}
