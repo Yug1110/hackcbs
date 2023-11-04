@@ -34,6 +34,7 @@ if __name__ == '__main__':
         if 'name' not in flask.session:
             flask.session['name'] = ''
             flask.session['logged'] = False
+            flask.session['test'] = False
             flask.session['id'] = None
 
             data_add = {
@@ -80,6 +81,7 @@ if __name__ == '__main__':
         flask.session['logged'] = False
         flask.session['name'] = ''
         flask.session['id'] = None
+        flask.session['test'] = False
 
         return flask.redirect(flask.url_for('main'))
     
@@ -92,7 +94,7 @@ if __name__ == '__main__':
             
             messages = {
                 'Consistantly good': 'Congrats! Your are performing well!',
-                'Decent': 'Your scores are decent but are below avergae.',
+                'Decent': 'Your scores are decent but are below average.',
                 'Bad': 'Your scores are really low, and maybe at risk of dyslexia.'
             }
             
@@ -110,16 +112,51 @@ if __name__ == '__main__':
                 gm = list(messages.keys())[2]
                 m = list(messages.values())[2]
 
-            return flask.render_template('report.html', _value=percent, _list=test_values, gist_message=gm, test_message=m)
+            return flask.render_template('report.html', _value=percent, _list=test_values, gist_message=gm, test_message=m, name=name)
         return flask.redirect(flask.url_for('main'))
     
 
-    @app.route('/<name>/notification/')
+    @app.route('/<name>/notification/', methods=['GET', 'POST'])
     def notification(name):
         if flask.session['logged'] is not False and name == flask.session['name']:
             num = len(json.loads(Database.query.get(flask.session['id']).ts)) + 1
+
+            if flask.request.method == 'POST':
+                flask.session['test'] = True
+                return flask.redirect(flask.url_for('take_test', name=flask.session['name']))
             return flask.render_template('notification.html', val=num)
         
+        return flask.redirect(flask.url_for('main'))
+    
+
+    @app.route('/<name>/test/', methods=['GET', 'POST'])
+    def take_test(name):
+        if flask.session['logged'] is not False and name == flask.session['name']:
+            if flask.session['test'] is False:
+                return flask.redirect(flask.url_for('main'))
+            if flask.request.method == 'POST':
+                corr_ans = ['benny', 'forest', 'picnic', 'sandwich', 'sally']
+                ans = [flask.request.form[f'ans{i}'] for i in range(1, 6)]
+
+                scored = 0
+
+                for i, a in enumerate(ans):
+                    if corr_ans[i] in a.lower(): scored += 1
+                
+                percent = (scored/5) * 100
+
+                data_dict = json.loads(Database.query.get(flask.session['id']).ts)
+                data_dict[f'Test{len(data_dict)}'] = percent/10
+
+                data_dict = json.dumps(data_dict)
+                Database.query.get(flask.session['id']).ts = data_dict
+                db.session.commit()
+
+                flask.session['test'] = False
+
+                return flask.redirect(flask.url_for('main'))
+
+            return flask.render_template('test.html')   
         return flask.redirect(flask.url_for('main'))
     
 

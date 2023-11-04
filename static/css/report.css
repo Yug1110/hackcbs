@@ -32,6 +32,13 @@ h1{
     font-size: 50px;
 }
 
+header{
+    width: 80%;
+    margin: 20px auto;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
 i{
     margin:0px 30px;
     font-size: 30px;

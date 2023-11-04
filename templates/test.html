@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/test.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <nav>
+        <h1>LexiScan</h1>
+    </nav>
+    <div class="parahgraph">
+        "Once upon a time, there was a little bear named Benny who lived in a cozy den in the forest. Benny loved to go on adventures with his animal friends. One sunny morning, he decided to have a picnic with his friend, Sally the squirrel. They packed their favorite sandwiches and set off on a fun journey through the woods."
+    </div>
+    <form method="POST">
+    <div class="questions">
+        <div class="question">
+            <h3>Question:</h3>
+            <h5>Who is the main character in the story?</h5>
+            <input type="text" placeholder="Write your answer here?" name="ans1">
+        </div>
+        <hr>
+        <div class="question">
+            <h3>Question:</h3>
+            <h5>Where does Benny the bear live?</h5>
+            <input type="text" placeholder="Write your answer here?" name="ans2">
+        </div>
+        <hr>
+        <div class="question">
+            <h3>Question:</h3>
+            <h5>What did Benny and Sally decide to do on the sunny morning?</h5>
+            <input type="text" placeholder="Write your answer here?" name="ans3">
+        </div>
+        <hr>
+        <div class="question">
+            <h3>Question:</h3>
+            <h5>What did Benny and Sally bring with them for their adventure?</h5>
+            <input type="text" placeholder="Write your answer here?" name="ans4">
+        </div>
+        <hr>
+        <div class="question">
+            <h3>Question:</h3>
+            <h5>Can you tell me one of Benny's friends who he likes to go on adventures with?</h5>
+            <input type="text" placeholder="Write your answer here?" name="ans5">
+        </div>
+        <hr>
+    </div>
+    <div class="butt">
+        <button>Submit Test</button>
+    </div>
+    </form>
+</body>
+</html>

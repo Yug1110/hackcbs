@@ -17,6 +17,11 @@
         </div>
     </nav>
 
+    <header>
+        Hi {{name}}! Welcome <br>
+        You can see your reprts below
+    </header>
+
     <div class="percentage">
         <div class="left">
             <div class="num">
@@ -57,7 +62,7 @@
 
             <li style="grid-column: span {{val}}">
                 Test {{loop.index}}:
-                <span>{{val}}/10</span>
+                <span>{{val*10}}%</span>
             </li>
 
             {% endfor %}
