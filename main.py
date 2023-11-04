@@ -73,9 +73,17 @@ if __name__ == '__main__':
         return flask.render_template('index.html', _name='', rno='', error='')
     
 
+    @app.route('/logout')
+    def logout():
+        flask.session['logged'] = False
+        flask.session['name'] = ''
+
+        return flask.redirect(flask.url_for('main'))
+    
+
     @app.route('/<name>')
     def account(name):
-        if flask.session['logged'] is not False:
+        if flask.session['logged'] is not False and name == flask.session['name']:
             return flask.render_template('report.html')
         return flask.redirect(flask.url_for('main'))
     
