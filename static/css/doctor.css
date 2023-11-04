@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+/* some common things to set up the environment */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+a{
+    text-decoration: none;
+
+}
+
+body{
+    background-color: #FFFCEC;
+    height: 100vh;
+}
+
+nav{
+    width: 100%;
+    background-color: black;
+    color: #FFFCEC;
+    height: 171px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1{
+    font-size: 50px;
+}
+
+i{
+    margin:0px 30px;
+    font-size: 30px;
+}
+
+i:hover{
+    cursor: pointer;
+    color: #fff4b9;
+}
+
+img{
+    width: 175px;
+    height: 195px;
+}
+
+header{
+    width: 80%;
+    margin: 20px auto;
+}
+
+h2{
+    font-size: 50px;
+}
+
+hr{
+    width: 60%;
+    border: 0.2px solid rgba(170, 170, 170, 0.594);
+    margin: 5px auto;
+}
+
+.second, .third{
+    margin-top: 10px;
+}
+
+.card{
+    max-width: 40%;
+    margin-right: 30px;
+    margin-bottom: 60px;
+}
+
+.images{
+    width: 80%;
+    margin: 80px auto;
+
+    /* display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; */
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+img{
+    float: left;
+    margin-right: 20px;
+    transition: all linear 0.2s;
+}
+
+img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.images > p{
+    font-size: 30px;
+}
+
+
+
+footer{
+    position:fixed;
+    bottom: 0px;
+    margin-top: auto;
+    background-color: black;
+    color: #FFFCEC;
+    height: 80px;
+    width: 100%;
+    text-align: center;
+}
+
+footer p{
+    margin-bottom: 10px;
+}
+
+footer a{
+    text-decoration: none;
+    color: #FFFCEC;
+}
+
+footer a:hover{
+    color: wheat;
+    cursor: pointer;
+}
