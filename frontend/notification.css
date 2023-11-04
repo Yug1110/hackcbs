@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+/* some common things to set up the environment */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+a{
+    text-decoration: none;
+
+}
+
+body{
+    background-color: #FFFCEC;
+    height: 100vh;
+}
+
+nav{
+    width: 100%;
+    background-color: black;
+    color: #FFFCEC;
+    height: 171px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1{
+    font-size: 50px;
+}
+
+i{
+    margin:0px 30px;
+    font-size: 30px;
+}
+
+i:hover{
+    cursor: pointer;
+    color: #fff4b9;
+}
+
+
+h1{
+    /* margin-top: 40px; */
+    width: 80%;
+    margin: 40px auto;
+}
+
+.test-section{
+    width: 80%;
+    margin: 20px auto;
+}
+
+.test{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.test > h4{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.timeline{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline > p{
+    color: black;
+}
+
+button{
+    width: 180px;
+    height: 70px;
+    border-radius: 60px;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
+    transition: transform linear 0.3s;
+}
+
+button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    color: #fff4b9;
+
+}
+
+hr{
+    margin: 40px auto;
+}
+
+
+
+footer{
+    position:fixed;
+    bottom: 0px;
+    margin-top: auto;
+    background-color: black;
+    color: #FFFCEC;
+    height: 80px;
+    width: 100%;
+    text-align: center;
+}
+
+footer p{
+    margin-bottom: 10px;
+}
+
+footer a{
+    text-decoration: none;
+    color: #FFFCEC;
+}
+
+footer a:hover{
+    color: wheat;
+    cursor: pointer;
+}
