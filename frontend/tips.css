@@ -36,3 +36,63 @@ i{
     margin:0px 30px;
     font-size: 30px;
 }
+
+i:hover{
+    cursor: pointer;
+    color: #fff4b9;
+}
+
+header{
+    width: 80%;
+    margin: 40px auto;
+}
+
+header > h2{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+header > h3{
+    margin-top: 20px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+header > h4{
+    margin-top: 40px;
+    font-size: 35px;
+}
+
+main{
+    width: 70%;
+    margin: 10px auto;
+}
+
+li{
+    font-size: 45px;
+}
+
+footer{
+    /* position:absolute; */
+    bottom: 0px;
+    margin-top: auto;
+    background-color: black;
+    color: #FFFCEC;
+    height: 80px;
+    width: 100%;
+    text-align: center;
+}
+/*  */
+footer p{
+    margin-bottom: 10px;
+}
+
+footer a{
+    text-decoration: none;
+    color: #FFFCEC;
+}
+
+footer a:hover{
+    color: wheat;
+    cursor: pointer;
+}
