@@ -37,6 +37,11 @@ i{
     font-size: 30px;
 }
 
+i:hover{
+    cursor: pointer;
+    color: #fff4b9;
+}
+
 .percentage{
     width: 80%;
     margin: 60px auto;

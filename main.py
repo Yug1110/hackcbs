@@ -34,6 +34,7 @@ if __name__ == '__main__':
         if 'name' not in flask.session:
             flask.session['name'] = ''
             flask.session['logged'] = False
+            flask.session['id'] = None
 
             data_add = {
                 'name': ['Samyak', 'Yugayu'],
@@ -64,6 +65,7 @@ if __name__ == '__main__':
                 if Database.query.filter_by(name=name, rno=rno, pwd=pwd).all():
                     flask.session['logged'] = True
                     flask.session['name'] = name
+                    flask.session['id'] = Database.query.filter_by(name=name, rno=rno, pwd=pwd).one().id
 
                     return flask.redirect(flask.url_for('main'))
                     
@@ -77,6 +79,7 @@ if __name__ == '__main__':
     def logout():
         flask.session['logged'] = False
         flask.session['name'] = ''
+        flask.session['id'] = None
 
         return flask.redirect(flask.url_for('main'))
     
@@ -84,7 +87,18 @@ if __name__ == '__main__':
     @app.route('/<name>')
     def account(name):
         if flask.session['logged'] is not False and name == flask.session['name']:
+            if Database.query.get(flask.session['id']).ts != json.dumps({}):
+                return flask.redirect(flask.url_for('notification', name=name))
+
             return flask.render_template('report.html')
+        return flask.redirect(flask.url_for('main'))
+    
+
+    @app.route('/<name>/notification')
+    def notification(name):
+        if flask.session['logged'] is not False and name == flask.session['name']:
+            return
+        
         return flask.redirect(flask.url_for('main'))
     
 
