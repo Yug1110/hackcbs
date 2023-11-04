@@ -37,10 +37,10 @@ if __name__ == '__main__':
             flask.session['id'] = None
 
             data_add = {
-                'name': ['Samyak', 'Yugayu'],
-                'rno': ['12345', '11111'],
-                'pwd': [encode_pass('Samyak'), encode_pass('Yugayu')],
-                'ts': [json.dumps({}), json.dumps({})]
+                'name': ['Samyak', 'Yugayu', 'Empty'],
+                'rno': ['12345', '11111', '00000'],
+                'pwd': [encode_pass('Samyak'), encode_pass('Yugayu'), encode_pass('Empty')],
+                'ts': [json.dumps({'Test1': 8}), json.dumps({'Test1': 7, 'Test2': 2}), json.dumps({})]
             }
 
             db.drop_all()
@@ -87,17 +87,37 @@ if __name__ == '__main__':
     @app.route('/<name>')
     def account(name):
         if flask.session['logged'] is not False and name == flask.session['name']:
-            if Database.query.get(flask.session['id']).ts != json.dumps({}):
+            if Database.query.get(flask.session['id']).ts == json.dumps({}):
                 return flask.redirect(flask.url_for('notification', name=name))
+            
+            messages = {
+                'Consistantly good': 'Congrats! Your are performing well!',
+                'Decent': 'Your scores are decent but are below avergae.',
+                'Bad': 'Your scores are really low, and maybe at risk of dyslexia.'
+            }
+            
+            test_values = list(json.loads(Database.query.get(flask.session['id']).ts).values())
+            avg = sum(test_values) / len(test_values)
+            percent = avg * 10
 
-            return flask.render_template('report.html')
+            if percent >= 70:
+                gm = list(messages.keys())[0]
+                m = list(messages.values())[0]
+            elif 30 < percent < 70:
+                gm = list(messages.keys())[1]
+                m = list(messages.values())[1]
+            else:
+                gm = list(messages.keys())[2]
+                m = list(messages.values())[2]
+
+            return flask.render_template('report.html', _value=percent, _list=test_values, gist_message=gm, test_message=m)
         return flask.redirect(flask.url_for('main'))
     
 
     @app.route('/<name>/notification')
     def notification(name):
         if flask.session['logged'] is not False and name == flask.session['name']:
-            return
+            return flask.render_template('notification.html')
         
         return flask.redirect(flask.url_for('main'))
     
