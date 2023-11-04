@@ -28,6 +28,14 @@ nav{
     justify-content: space-between;
 }
 
+header{
+    width: 80%;
+    margin: 20px auto;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+
 h1{
     font-size: 50px;
 }
