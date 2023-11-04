@@ -122,7 +122,7 @@ button:hover{
 }
 
 footer{
-    position:absolute;
+    /* position:absolute; */
     bottom: 0px;
     margin-top: auto;
     background-color: black;
@@ -131,7 +131,7 @@ footer{
     width: 100%;
     text-align: center;
 }
-
+/*  */
 footer p{
     margin-bottom: 10px;
 }
