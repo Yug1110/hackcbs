@@ -18,9 +18,8 @@ import pickle
 
 
 class eeg_data_collection():
-    def __init__(self, age=10):
-        # self.age = age
-        # eeg_data = eeg.collect().append(self.age)
+    def __init__(self, age=10, gender=0):
+        # eeg_data = eeg.collect().extend([age, gender])
 
         self.sample_eeg_data = [
                 [56.0, 43.0, 278.0, 301963.0, 90612.0, 33735.0, 23991.0, 27946.0, 45097.0, 33228.0, 8293.0, 10, 0],
