@@ -28,6 +28,24 @@ nav{
     justify-content: space-between;
 }
 
+.tips{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.tips i {
+    margin-top: 10px;
+    color: black;
+    transition: all linear 0.2s;
+}
+
+.tips i:hover{
+    color: red;
+    transform: scale(1.03);
+}
+
 header{
     width: 80%;
     margin: 20px auto;
