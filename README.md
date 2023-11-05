@@ -2,6 +2,10 @@
 
 ## Idea and Working Presentation
 
+## Presentation link
+https://www.canva.com/design/DAFzRQ7SjFM/XeTr0ekCW6OYhU_NnBf57g/edit
+
+
 
 ## About
 Dyslexia is a medical condition, in which, the individual is unable to comprehend complex learning patterns or even the simple ones.
