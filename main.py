@@ -97,7 +97,6 @@ if __name__ == '__main__':
         global start
 
         start = False
-        flask.session['test'] = False
 
         if flask.session['logged'] is True:
             return flask.redirect(flask.url_for('main'))
@@ -135,7 +134,6 @@ if __name__ == '__main__':
     def account(name):
         global start
 
-        flask.session['test'] = False
         start = False
         if flask.session['logged'] is not False and name == flask.session['name']:
             if Database.query.get(flask.session['id']).ts == json.dumps({}):
@@ -176,7 +174,6 @@ if __name__ == '__main__':
     def notification(name):
         global start
 
-        flask.session['test'] = False
         start = False
         if flask.session['logged'] is not False and name == flask.session['name']:
             num = len(json.loads(Database.query.get(flask.session['id']).ts)) + 1
@@ -217,7 +214,6 @@ if __name__ == '__main__':
             start = True
 
             def eeg_func():
-                global start
                 while start:
                     eeg.get_eeg()
                     time.sleep(1)
@@ -251,7 +247,6 @@ if __name__ == '__main__':
                 db.session.commit()
 
                 return flask.redirect(flask.url_for('main'))
-
             return flask.render_template('test.html')   
         return flask.redirect(flask.url_for('main'))
     
@@ -260,7 +255,6 @@ if __name__ == '__main__':
     def main():
         global start
 
-        flask.session['test'] = False
         start = False
 
         if flask.session['logged'] is False:
