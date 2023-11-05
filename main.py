@@ -143,7 +143,7 @@ if __name__ == '__main__':
             
             messages = {
                 'Consistantly good': 'Congrats! Your are performing well!',
-                'Decent': 'Your scores are decent but are below average.',
+                'Decent': 'Your scores are below average.',
                 'Bad': 'Your scores are really low, and maybe at risk of dyslexia.'
             }
             
@@ -152,17 +152,23 @@ if __name__ == '__main__':
             avg = sum(test_values) / len(test_values)
             percent = avg * 10
 
+            not_hide = True
+            pass_url = ''
+
             if percent >= 70:
                 gm = list(messages.keys())[0]
                 m = list(messages.values())[0]
+                not_hide = False
             elif 30 < percent < 70:
                 gm = list(messages.keys())[1]
                 m = list(messages.values())[1]
+                pass_url = flask.url_for('tips')
             else:
                 gm = list(messages.keys())[2]
                 m = list(messages.values())[2]
+                pass_url = flask.url_for('specialists')
 
-            return flask.render_template('report.html', _value=percent, _list=test_values, gist_message=gm, test_message=m, name=name)
+            return flask.render_template('report.html', pass_url=pass_url, tips_value=not_hide, _value=percent, _list=test_values, gist_message=gm, test_message=m, name=name)
         return flask.redirect(flask.url_for('main'))
     
 

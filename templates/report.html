@@ -18,6 +18,12 @@
         </div>
     </nav>
 
+    {% if tips_value %}
+    <a href="{{ pass_url }}" class="tips">
+        <i class="fa-solid fa-circle-question"></i>
+    </a>
+    {% endif %}
+
     <header>
         Hi {{name}}! Welcome! <br>
         You can see your reports below:
