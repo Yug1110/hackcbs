@@ -12,14 +12,15 @@
         <i class="fa-solid fa-bars"></i>
         <h1>LexiScan</h1>
         <div class="last">
-            <i class="fa-solid fa-bell"></i>
-            <i class="fa-solid fa-user"></i>
+            <a href="{{ url_for('notification', name=session['name']) }}"><i class="fa-solid fa-bell" id="bell"></i></a>
+            <i class="fa-solid fa-user" id="acc"><a href="{{ url_for('logout') }}" id="log">LOGOUT</a></i>
+            
         </div>
     </nav>
 
     <header>
-        Hi {{name}}! Welcome <br>
-        You can see your reports below
+        Hi {{name}}! Welcome! <br>
+        You can see your reports below:
     </header>
 
     <div class="percentage">
@@ -59,13 +60,15 @@
             -->
 
             {% for val in _list %}
-
-            <li style="grid-column: span {{val}}">
+            <div style="width: 100%;">
+            <li style="width: {{val*10}}%;">
                 Test {{loop.index}}:
                 <span>{{val*10}}%</span>
             </li>
-
+            <br>
+            </div>
             {% endfor %}
+            
            
         </ul>
     </div>
@@ -93,6 +96,6 @@
     bar.style.background = `linear-gradient(to right, black ${value}%, transparent 0%)`;
 
     const percentage=document.querySelector(".num > h4");
-    percentage.innerHTML=value+"%";
+    percentage.innerHTML=parseInt(value)+"%";
 </script>
 </html>

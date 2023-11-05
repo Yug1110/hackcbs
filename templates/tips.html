@@ -13,8 +13,8 @@
         <i class="fa-solid fa-bars"></i>
         <h1>LexiScan</h1>
         <div class="last">
-            <i class="fa-solid fa-bell"></i>
-            <i class="fa-solid fa-user"></i>
+            <a href="{{ url_for('notification', name=session['name']) }}"><i class="fa-solid fa-bell"></i></a>
+            <a href="{{ url_for('account', name=session['name']) }}"><i class="fa-solid fa-user"></i></i></a>
         </div>
     </nav>
 

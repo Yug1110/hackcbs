@@ -176,10 +176,26 @@ if __name__ == '__main__':
             num = len(json.loads(Database.query.get(flask.session['id']).ts)) + 1
 
             if flask.request.method == 'POST':
+                start = True
                 flask.session['test'] = True
+
                 return flask.redirect(flask.url_for('take_test', name=flask.session['name']))
             return flask.render_template('notification.html', val=num)
         
+        return flask.redirect(flask.url_for('main'))
+    
+
+    @app.route('/tips/')
+    def tips():
+        if flask.session['logged'] is True:
+            return flask.render_template('tips.html')
+        return flask.redirect(flask.url_for('main'))
+    
+
+    @app.route('/specialists/')
+    def specialists():
+        if flask.session['logged'] is True:
+            return flask.render_template('doctor.html')
         return flask.redirect(flask.url_for('main'))
     
 
@@ -198,7 +214,7 @@ if __name__ == '__main__':
                 global start
                 while start:
                     eeg.get_eeg()
-                    time.sleep(3)
+                    time.sleep(1)
 
             socketio.start_background_task(eeg_func)
 
@@ -222,7 +238,7 @@ if __name__ == '__main__':
                 percent = round(percent + value, 2)
 
                 data_dict = json.loads(Database.query.get(flask.session['id']).ts)
-                data_dict[f'Test{len(data_dict)}'] = round(percent/10)
+                data_dict[f'Test{len(data_dict) + 1}'] = round(percent/10)
 
                 data_dict = json.dumps(data_dict)
                 Database.query.get(flask.session['id']).ts = data_dict
